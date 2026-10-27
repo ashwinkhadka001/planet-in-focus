@@ -37,7 +37,7 @@ function colorFor(t: number) {
 function MapPage() {
   const [year, setYear] = useState(2022);
   const [metric, setMetric] = useState<"temp" | "emissions">("temp");
-  const [hover, setHover] = useState<{ name: string; value?: number; x: number; y: number } | null>(null);
+  const [hover, setHover] = useState<{ name: string; value: number | undefined; x: number; y: number } | null>(null);
 
   const values = useMemo(() => {
     const m = new Map<string, number>();
@@ -57,7 +57,7 @@ function MapPage() {
         </ToggleGroup>
         <div className="flex min-w-64 flex-1 items-center gap-4 md:max-w-md">
           <span id="yl" className="text-2xl font-bold tabular-nums">{year}</span>
-          <Slider aria-labelledby="yl" min={1960} max={2022} step={1} value={[year]} onValueChange={(v) => setYear(v[0])} />
+          <Slider aria-labelledby="yl" min={1960} max={2022} step={1} value={[year]} onValueChange={(v) => setYear(v[0] ?? 2022)} />
         </div>
         <Button variant="outline" size="sm" onClick={() => downloadCSV(COUNTRIES.map((c) => ({ country: c.name, year, [metric]: values.get(c.id) })), `map-${metric}-${year}.csv`)}>
           <Download /> CSV

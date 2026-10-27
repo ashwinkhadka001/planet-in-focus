@@ -8,11 +8,11 @@ export type YearPoint = { year: number; value: number };
 
 function interp(anchors: [number, number][], year: number) {
   for (let i = 0; i < anchors.length - 1; i++) {
-    const [y0, v0] = anchors[i];
-    const [y1, v1] = anchors[i + 1];
+    const [y0, v0] = anchors[i]!;
+    const [y1, v1] = anchors[i + 1]!;
     if (year >= y0 && year <= y1) return v0 + ((v1 - v0) * (year - y0)) / (y1 - y0);
   }
-  return year < anchors[0][0] ? anchors[0][1] : anchors[anchors.length - 1][1];
+  return year < anchors[0]![0] ? anchors[0]![1] : anchors[anchors.length - 1]![1];
 }
 // deterministic "noise" so data looks natural and is stable across renders
 const wobble = (year: number, amp: number) =>

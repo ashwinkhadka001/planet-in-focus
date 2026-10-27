@@ -45,7 +45,7 @@ function Compare() {
   const cb = COUNTRIES.find((c) => c.id === b)!;
   const data = useMemo(() => {
     const sa = countrySeries(ca), sb = countrySeries(cb);
-    return sa.map((p, i) => ({ year: p.year, [ca.name]: p[metric], [cb.name]: sb[i][metric] }));
+    return sa.map((p, i) => ({ year: p.year, [ca.name]: p[metric], [cb.name]: sb[i]![metric] }));
   }, [ca, cb, metric]);
   const la = countrySeries(ca).at(-1)!, lb = countrySeries(cb).at(-1)!;
 

@@ -11,7 +11,7 @@ export function downloadBlob(blob: Blob, filename: string) {
 
 export function toCSV(rows: Record<string, unknown>[]) {
   if (!rows.length) return "";
-  const keys = Object.keys(rows[0]);
+  const keys = Object.keys(rows[0]!);
   const esc = (v: unknown) => {
     const s = String(v ?? "");
     return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;

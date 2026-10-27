@@ -53,7 +53,7 @@ function Dashboard() {
       <div className="mb-8 grid gap-6 rounded-2xl border bg-card p-5 md:grid-cols-3">
         <div>
           <label className="text-sm font-medium" id="yr">Years: {years[0]} – {years[1]}</label>
-          <Slider aria-labelledby="yr" className="mt-4" min={1880} max={2024} step={1} value={years} onValueChange={(v) => setYears([v[0], v[1]] as [number, number])} />
+          <Slider aria-labelledby="yr" className="mt-4" min={1880} max={2024} step={1} value={years} onValueChange={(v) => setYears([v[0] ?? 1880, v[1] ?? 2024])} />
         </div>
         <div>
           <label className="text-sm font-medium">Region (temperature)</label>
