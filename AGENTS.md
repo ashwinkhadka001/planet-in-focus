@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Climate datasets live in src/data/climate.ts behind get*/country* functions; swap those for CSV/API loaders returning the same shapes so charts stay untouched.
